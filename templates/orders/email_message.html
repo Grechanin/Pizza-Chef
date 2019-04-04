@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+
+    <!-- 
+      Bootstrap 4.3.1 stylesheet 
+    -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+  </head>
+
+  <body>
+
+    
+    <div class="main-container">
+ 
+
+      <main role="main">
+
+	<div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+	            <div class="order-contacts">
+	                <h2 class="text-center">Contacts</h2>
+	                <div class="row">
+	                    <div class="col-md-12">
+	                    	<p>Client: {{ order.name }}</p>
+	                    	<p>Phone: {{ order.phone }}</p>
+	                    	<p>Е-mail: {{ order.email }}</p>
+	                    	<p>Comment: {{ order.comments }}</p>
+	                    </div>
+	                </div>
+	            </div>
+
+                <div class="order-table">
+                    <h2 class="text-center">Ingredients in order</h2>
+                    <table class="table text-center">
+                        <thead>
+                        <tr style="text-align: center;">
+                            <th class="text-center" style="padding: 5px 15px 5px 15px">№</th>
+                            <th class="text-center" style="padding: 5px 15px 5px 15px">Name</th>
+                            <th class="text-center" style="padding: 5px 15px 5px 15px">Quantity</th>
+                            <th class="text-center" style="padding: 5px 15px 5px 15px">Price pre item</th>
+                            <th class="text-center" style="padding: 5px 15px 5px 15px">Total price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for ingredient in ingredients_in_order %}
+                            <tr style="text-align: center;">
+                                <td>{{  forloop.counter }}</td>
+                                <td>{{ ingredient.ingredient.name }}</td>
+                                <td><span>{{ ingredient.nmb }}</span></td>
+                                <td><span class="product-price-pre-item">{{ ingredient.price_pre_item }}</span></td>
+                                <td>
+                                    <span class="total-product-price-in-basket">
+                                        {{ ingredient.total_price }}
+                                    </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <div class="text-right">
+                    <b>Total order price: {{ order.total_price }} UAH</b>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      </main>
+    </div>
+
+  </body>
+</html>
+
